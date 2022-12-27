@@ -43,6 +43,12 @@ function visTxt(){
         }
         $.post("/innData", objekt, function (){
             hentKunder();
+            // vi utvider denne med feil funksjonen(gjør en liten endring på Html
+            // for å vise feilen
+        }).fail(function (jqXHR){
+            const json = $.parseJSON(jqXHR.responseText);
+            // Viser feilen til bruker
+            $("#feil").html(json.message);
         });
         //nullstiller input felter
         $("#film").val("");
@@ -63,9 +69,15 @@ function visTxt(){
 
 
 }
+// vi utvider denne med feil funksjonen
 function hentKunder(){
     $.get("/hentData", function ( data ){
         innKunder(data);
+
+    }).fail(function (jqXHR){
+        const json = $.parseJSON(jqXHR.responseText);
+        // Viser feilen til bruker
+        $("#feil").html(json.message);
     });
 }
 

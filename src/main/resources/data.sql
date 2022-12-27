@@ -1,0 +1,1 @@
+INSERT INTO Brukere (brukerNavn,passord) VALUES ('admin','adminAdmin1234')
