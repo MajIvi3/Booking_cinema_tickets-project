@@ -8,23 +8,33 @@
     <script src="validering.js"></script>
 
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
 </head>
 <body>
 <h1>Login </h1>
+
+<!--Name and password fields-->
 <form class="form">
+
+    <!--Name-->
     <div class="form-group">
         <label>Navn</label>
         <input type="text" id="navn" onchange="validerNavn(this.value)"/>
         <span id="feilNavn" style="color: red"></span>
     </div>
+
+    <!--Password-->
     <div class="form-group">
         <label>Passord</label>
         <input type="text" id="passord" onchange="validerPassord(this.value)"/>
         <span id="feilPassord" style="color:red"></span>
     </div>
+
+    <!--buttons-->
     <div class="form-group">
         <input type="button" id="reg" value="Logg inn" onClick="validerOgLogin()" class="btn btn-primary"/>
+
+        <!--Go to customer list-->
         <a href="index.html" class="btn btn-primary">Til kundelisten</a>
     </div>
     <div id="feil" style="color: red"></div>

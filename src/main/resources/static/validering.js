@@ -1,12 +1,13 @@
 
-//Lager validering i egen fil fordi det er en funksjon som skal brukes på flere steder
+//Creating validation in its own file because it is a feature that will be used in multiple locations
 
+// Name
 function  validerNavn(navn){
     const regexp = /^[a-zæøåA-ZÆØÅ. \-]{2,30}$/;
     const ok = regexp.test(navn);
 
     if(!ok){
-        $("#feilNavnValid").html("Navn må bestå av 2 til 30 bokstaver");
+        $("#feilNavnValid").html("Navnet må bestå av minst 2 bokstaver");
         return false;
     }else {
         $("#feilNavnValid").html("")
@@ -14,6 +15,7 @@ function  validerNavn(navn){
     }
 }
 
+// Phone number
 function validerTelefonnr(telefonnr){
 
     const regexp = /^[0-9. \-]{8,12}$/;
@@ -21,7 +23,7 @@ function validerTelefonnr(telefonnr){
     const ok = regexp.test(telefonnr);
 
     if(!ok){
-        $("#feilTelefonnrValid").html("Telefonnummer må bestå av 8 til 12 tall");
+        $("#feilTelefonnrValid").html("Telefonnummeret må bestå av minst 8 tall");
         return false;
     }else {
         $("#feilTelefonnrValid").html("")
@@ -29,6 +31,7 @@ function validerTelefonnr(telefonnr){
     }
 }
 
+// Email
 function validerEpost(epost){
 
     const regexp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
@@ -36,7 +39,7 @@ function validerEpost(epost){
     const ok = regexp.test(epost);
 
     if(!ok){
-        $("#feilEpostValid").html("Epost må besto av tall, bokstaver og @");
+        $("#feilEpostValid").html("E-post må bestå av tall, bokstaver og @");
         return false;
     }else {
         $("#feilEpostValid").html("")
@@ -44,11 +47,12 @@ function validerEpost(epost){
     }
 }
 
+// Password
 function validerPassord(passord){
     var regexp = /(?=.*[a-zA-ZæøåÆØÅ])(?=.*\d)[a-zA-ZæøåÆØÅ\d]{8,}/;
     var ok = regexp.test(passord);
     if(!ok){
-        $("#feilPassord").html("Passordet må være minimum 8 tegn, et av de en bokstav og et tall");
+        $("#feilPassord").html("Passordet må bestå av minimum 8 tegn og ett tall");
         return false;
     }
     else{

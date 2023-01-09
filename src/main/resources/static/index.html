@@ -18,7 +18,10 @@
         <div class="col-md-4">
             <h3>Bestilling av kinobiletter</h3><br>
             <form class="form">
+
+                <!--select movie-->
                 <div class="form-group">
+
                     <label for="film">Velg film</label>
 
                     <select name="filmer" id="film" class="form-control" >
@@ -30,44 +33,53 @@
                     <label id="feilFilm"></label>
                 </div>
 
+                <!--Select the number of tickets-->
                 <div class="form-group">
                     <label for="nr">Antall</label>
                     <input type="number" id="nr" class="form-control" />
                     <label id="feilAntal"></label>
                 </div>
 
+                <!--first name-->
                 <div class="form-group">
                     <label for="navn">Fornavn</label>
-                    <!--Inputvalidering på klient siden for navn-->
+                    <!--Input validation on client name page-->
                     <input type="text" id="navn" onchange="validerNavn(this.value)" class="form-control" />
                     <span id="feilNavnValid" style="color: red" />
                     <label id="feilNavn"></label>
                 </div>
+
+                <!--lastname-->
                 <div class="form-group">
                     <label for="etteravn">Etternavn</label>
                     <input type="text" id="etteravn" class="form-control">
                     <label id="feilEtternav"></label>
                 </div>
+
+                <!--telephone-->
                 <div class="form-group">
                     <label for="tel">Telefonnr</label>
-                    <!--Inputvalidering på klient siden for navn-->
+                    <!--Client-side input validation for telephone-->
                     <input type="text" id="tel" onchange="validerTelefonnr(this.value)" class="form-control" />
                     <span id="feilTelefonnrValid" style="color: red" />
                     <label id="feilTel"></label>
                 </div>
-                <!--Inputvalidering på klient siden for epost-->
+
+                <!--email-->
                 <div class="form-group">
                     <label for="epost">Epost</label>
+                    <!--Input validation on client side for email-->
                     <input type="text" id="epost" onchange="validerEpost(this.value)" class="form-control" />
                     <span id="feilEpostValid" style="color: red" />
                     <label id="feilPost"></label>
                 </div>
             </form>
+            <!--button-->
             <button id="kjopBilett" onclick="visTxt()" class="btn btn-primary">Kjøp billett</button>
         </div>
         <div class="col-md-8">
             <h3 ><strong>Alle biletter</strong></h3>
-            <!--Viser feilen til brukeren-->
+            <!--Showing the error to the user-->
             <div id="feil"></div>
             <div id="bilettKjop"></div>
             <button id="slettBilett" onclick="slett()" class="btn btn-danger">Slett alle billettene</button>

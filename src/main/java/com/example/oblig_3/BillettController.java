@@ -18,13 +18,15 @@ public class BillettController {
     @Autowired
     BillettRepository rep;
 
-    //validering på server siden
+    //server-side validation
     private boolean validerKunde(Billett kunde) {
-        //Testen må være lik som i validering fra JS
+
+        //The test must be the same as in validation from JS
         String regexpNavn = "[a-zæøåA-ZÆØÅ. \\-]{2,30}";
         String regexpTelefonnr ="[0-9. \\-]{8,12}";
         String regxEpost = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}";
 
+        //checking if correct
         boolean navnOK = kunde.getNavn().matches(regexpNavn);
         boolean telefonnrOK = kunde.getTelefon().matches(regexpTelefonnr);
         boolean epostOK = kunde.getEpost().matches(regxEpost);
@@ -37,14 +39,17 @@ public class BillettController {
         }
     }
 
-    @PostMapping("/innData")// lagrer kunder
+    // Saving customers who "buy ticket"
+    @PostMapping("/innData")
     public void innKunder(Billett kunder, HttpServletResponse response) throws IOException {
-        //input validering
+
+        //input validation
         if (!validerKunde(kunder)){
             response.sendError(HttpStatus.NOT_ACCEPTABLE.value());
         }
         else {
-            //Feilhåndtering og loggføring i databasen
+
+            //Error handling and logging in the database
             if(!rep.innKunder(kunder)){
                 response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
                         "Feil i database - prøv igjen senere");
@@ -53,9 +58,11 @@ public class BillettController {
 
     }
 
-    @GetMapping("/hentData")// setter kunder
+    // lists out all customers
+    @GetMapping("/hentData")
     public List<Billett> hentKunder(HttpServletResponse response) throws IOException{
-        //Feilhåndtering og loggføring i databasen for en array
+
+        //Error handling and logging in the database in via array
         if(rep.hentAlleKunder()== null){
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
                     "Feil i /hentData - prøv igjen senere");
@@ -63,10 +70,11 @@ public class BillettController {
         return rep.hentAlleKunder();
     }
 
-    @GetMapping("/slettArray")// sletter kunnder
+    // Deleting customers who "bought a ticket"
+    @GetMapping("/slettArray")
     public void slettArray(){ rep.slettAlle();}
 
-    //Sesjoner
+    //Sessions
     @Autowired
     private HttpSession session;
 

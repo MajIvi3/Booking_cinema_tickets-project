@@ -1,10 +1,12 @@
 
 
 function visTxt(){
+
+    // IF ALL input boxes are NOT filled in- show error messages to user
     if ( $("#film option:selected").val()==="" || $("#navn").val()==="" || $("#etteravn").val()==="" ||
         $("#tel").val()==="" ||$("#epost").val()==="" || $("#nr").val()==="")
     {
-        //Dersom man fyller ut input-boxer, feil feltet nullstilles
+        //If user fills in all the input-box, the error field resets
         $("#feilFilm").html("");
         $("#feilNavn").html("");
         $("#feilEtternav").html("");
@@ -12,7 +14,7 @@ function visTxt(){
         $("#feilPost").html("");
         $("#feilAntal").html("");
 
-        //feilmelding skrivers ut
+        //error message prints out
         if ($("#film option:selected").val() ===""){$("#feilFilm").html("<strong>"+"Må velge noe film"+"</strong>");}
         if ($("#navn").val() ===""){$("#feilNavn").html("<strong>"+"Må skrive noe inn i fornavn"+"</strong>");}
         if ($("#etteravn").val() ===""){$("#feilEtternav").html("<strong>"+"Må skrive noe inn etternavn"+"</strong>");}
@@ -21,7 +23,7 @@ function visTxt(){
         if ($("#nr").val() === ""){$("#feilAntal").html("<strong>"+"Må skrive noe inn i antal"+"</strong>");}
         else {}
 
-        //fargen på feilmeldingen
+        //The color of the error message
         feilFilm.style.color ="crimson";
         feilNavn.style.color="crimson";
         feilEtternav.style.color="crimson";
@@ -30,6 +32,7 @@ function visTxt(){
         feilAntal.style.color="crimson";
 
     }
+    // IF All input boxes are filled in do:
     else
     {
 
@@ -47,10 +50,10 @@ function visTxt(){
             // for å vise feilen
         }).fail(function (jqXHR){
             const json = $.parseJSON(jqXHR.responseText);
-            // Viser feilen til bruker
+            // Show the error to user
             $("#feil").html(json.message);
         });
-        //nullstiller input felter
+        //resets input fields
         $("#film").val("");
         $("#navn").val("");
         $("#etteravn").val("");
@@ -58,7 +61,7 @@ function visTxt(){
         $("#epost").val("");
         $("#nr").val("");
 
-        //nullstiller feilmeldinger
+        //Resetting error messages
         $("#feilFilm").html("");
         $("#feilNavn").html("");
         $("#feilEtternav").html("");
@@ -76,7 +79,7 @@ function hentKunder(){
 
     }).fail(function (jqXHR){
         const json = $.parseJSON(jqXHR.responseText);
-        // Viser feilen til bruker
+        // Show the error to user
         $("#feil").html(json.message);
     });
 }

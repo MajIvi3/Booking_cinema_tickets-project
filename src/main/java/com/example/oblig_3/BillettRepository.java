@@ -16,12 +16,12 @@ public class BillettRepository {
     private JdbcTemplate db;
     private Logger logger = LoggerFactory.getLogger(BillettRepository.class);
 
-    //bytter metoden fra void til boolean
+
     public boolean innKunder(Billett kunde){
-                 //Legget inn feil (LL på slutten) for ikke skrevet ut feil til bruker
+                 //Data in
         String sql = "INSERT INTO Billett (film, navn, etternavn, telefon, epost, antal) VALUES (?,?,?,?,?,?)";
 
-        //Feilhåndtering og loggføring i databasen
+        //Error handling and logging in the database
         try {
             db.update(sql, kunde.getFilm(), kunde.getNavn(), kunde.getEtternavn(), kunde.getTelefon(),
                     kunde.getEpost(), kunde.getAntal());
@@ -31,7 +31,7 @@ public class BillettRepository {
             return false;
         }
     }
-    //Feilhåndtering og loggføring i databasen med array
+    //Error handling and logging in the array database
     public List<Billett> hentAlleKunder(){
 
         String sql = "SELECT * FROM Billett";
@@ -44,13 +44,15 @@ public class BillettRepository {
         }
 
     }
+    // Delete everything from database
     public void slettAlle(){
         String sql = "DELETE FROM Billett";
 
         db.update(sql);
     }
-    //Sesjoner
+    //Sessions
     public boolean sjekkNavnOgPassord (Billett kunde) {
+
         Object[] param = new Object[]{kunde.getNavn(),kunde.getPassord()};
         String sql = "SELECT COUNT(*) FROM Kunde WHERE navn=? AND passord=?";
         try{

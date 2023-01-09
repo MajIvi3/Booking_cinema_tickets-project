@@ -8,7 +8,6 @@ public class Brukere {
 
 
 
-
     public Brukere(int id,String passord, String brukerNavn) {
         this.id = id;
         this.passord = passord;

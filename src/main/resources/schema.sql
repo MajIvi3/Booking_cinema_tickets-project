@@ -1,3 +1,5 @@
+
+//Defines the database at server startup
 CREATE TABLE  Billett
 (
     id INTEGER AUTO_INCREMENT NOT NULL,

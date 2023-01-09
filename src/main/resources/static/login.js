@@ -1,3 +1,5 @@
+
+// If name and password are correct login
 function validerOgLogin(){
     const navnOK = validerNavn($("#navn").val());
     const passordOK = validerPassord($("#passord").val());
@@ -6,7 +8,7 @@ function validerOgLogin(){
     }
 }
 
-
+// logout
 function logout(){
     const url = "/logout";
     $.get( url, function() {
@@ -14,6 +16,7 @@ function logout(){
     })
 }
 
+// login
 function login(){
     const kunde = {
         navn : $("#navn").val(),
