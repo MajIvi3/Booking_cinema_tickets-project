@@ -1,17 +1,19 @@
-# Oblig X
 
-OsloMet brukernavn: sXXXXXX
+Subject: Web Programming DATA1700
 
-GitHub brukernavn: 
+This course aims to provide an understanding of principles for web architectures, client/server architecture, and developing dynamic web pages with high usability and accessibility, The course also covers linking dynamic web pages to a relational database, addressing various security challenges, and handling sessions and cookies to maintain state
 
-GitHub repo URL: 
+Throughout the course i have built a program called Booking cinema tickets. The program involved taking in the user's information and logging data into the database.
 
-URL til Heroku app: 
+The following tools have been used in programm building:
 
-Fullt navn: 
-
-Kort beskrivelse av applikasjon (5–10 setninger): 
-
-Her skal det legges inn en kort beskrivelse av innleveringen din.
-
-Inkluder også mangler du vet om, antagelser du har gjort og eventuelle kommentarer.
+- Apache Maven
+- jQuery
+- Bootstrap
+- HTML
+- Cascading Style Sheets (CSS)
+- JavaScript (JS)
+- Apache Tomcat
+- MySQL
+- Spring Boot
+- Java
